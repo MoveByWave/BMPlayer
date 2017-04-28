@@ -16,6 +16,7 @@ public protocol BMPlayerDelegate : class {
     func bmPlayer(player: BMPlayer ,loadedTimeDidChange loadedDuration: TimeInterval, totalDuration: TimeInterval)
     func bmPlayer(player: BMPlayer ,playTimeDidChange currentTime : TimeInterval, totalTime: TimeInterval)
     func bmPlayer(player: BMPlayer ,playerIsPlaying playing: Bool)
+    func bmPlayer(player: BMPlayer ,isFullScreen: Bool)
 }
 
 /**
@@ -320,6 +321,7 @@ open class BMPlayer: UIView {
             UIApplication.shared.setStatusBarHidden(false, with: .fade)
             UIApplication.shared.statusBarOrientation = .landscapeRight
         }
+        delegate?.bmPlayer(player: self, isFullScreen: isFullScreen);
     }
     
     // MARK: - 生命周期
